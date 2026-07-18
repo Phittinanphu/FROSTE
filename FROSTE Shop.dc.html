@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 56"><rect width="80" height="56" fill="#cfe0ff"/><circle cx="40" cy="20" r="14" fill="#ffffff" opacity="0.85"/><text x="40" y="44" font-size="10" text-anchor="middle" font-family="Arial" fill="#182238" font-weight="700">SHOP</text></svg></template>
+<meta name="ext-resource-dependency" content="assets/product-acne-care.png">
+<meta name="ext-resource-dependency" content="assets/product-oil-control.png">
+<meta name="ext-resource-dependency" content="assets/product-dewy-glow.png">
+<link rel="stylesheet" href="_ds/frost-design-system-5751f865-60d7-445c-b780-92e9fc5afdb0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/frost-design-system-5751f865-60d7-445c-b780-92e9fc5afdb0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/frost-design-system-5751f865-60d7-445c-b780-92e9fc5afdb0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/frost-design-system-5751f865-60d7-445c-b780-92e9fc5afdb0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/frost-design-system-5751f865-60d7-445c-b780-92e9fc5afdb0/tokens/effects.css">
+<link rel="stylesheet" href="_ds/frost-design-system-5751f865-60d7-445c-b780-92e9fc5afdb0/styles.css">
+<script src="_ds/frost-design-system-5751f865-60d7-445c-b780-92e9fc5afdb0/_ds_bundle.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);color:var(--ink-900);background:var(--surface-page);-webkit-font-smoothing:antialiased}
+a{color:var(--pink-500);text-decoration:none}
+a:hover{color:var(--pink-600)}
+::selection{background:var(--pink-200)}
+@keyframes froLoadBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes froLoadPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0.55)}50%{transform:scale(1.08);box-shadow:0 0 0 16px rgba(255,255,255,0)}}
+@keyframes froLoadDot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+.sc-host{height:auto !important}
+#logo-word-header div,#logo-word-footer div{color:#76C3FFEB !important}
+#logo-mark-header circle,#logo-mark-footer circle{fill:var(--ink-900) !important}
+#logo-mark-header path[stroke],#logo-mark-footer path[stroke]{stroke:var(--ink-900) !important}
+</style>
+</helmet>
+
+<sc-if value="{{ showLoader }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--grad-holographic-soft);transition:opacity .45s ease;opacity:{{ loaderOpacity }}">
+    <div style="width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;animation:froLoadPulse 1.1s ease-in-out infinite">
+      <span style="font-size:44px;animation:froLoadBounce 1.1s ease-in-out infinite;display:block">💧</span>
+    </div>
+    <span style="font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-900)">Frosté</span>
+    <div style="display:flex;gap:6px">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--ink-900);animation:froLoadDot 1s ease-in-out infinite"></span>
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--ink-900);animation:froLoadDot 1s ease-in-out infinite;animation-delay:.15s"></span>
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--ink-900);animation:froLoadDot 1s ease-in-out infinite;animation-delay:.3s"></span>
+    </div>
+  </div>
+</sc-if>
+
+<header style="position:sticky;top:0;z-index:50;display:flex;flex-direction:column;background:var(--glass-fill-strong);backdrop-filter:var(--blur-md);-webkit-backdrop-filter:var(--blur-md);border-bottom:1px solid var(--border-on-glass)">
+  <div style="display:flex;flex-wrap:wrap;row-gap:8px;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(16px,4vw,40px)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span id="logo-mark-header"><x-import component-from-global-scope="FrostDesignSystem_5751f8.Logomark" size="30" fill="solid" color="#76C3FFEB" hint-size="30px,30px"></x-import></span>
+      <span id="logo-word-header"><x-import component-from-global-scope="FrostDesignSystem_5751f8.Wordmark" as="div" size="19px" fill="solid" hint-size="90px,22px">FROSTÉ</x-import></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="position:relative;display:inline-flex">
+        <button type="button" aria-label="View bag" title="View bag" onClick="{{ openCart }}" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--border-on-glass);background:var(--glass-fill);backdrop-filter:var(--blur-md);-webkit-backdrop-filter:var(--blur-md);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1">🛍️</button>
+        <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute;top:-2px;right:-2px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--pink-500);color:#fff;font-family:var(--font-display);font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);pointer-events:none">{{ cartCount }}</span>
+        </sc-if>
+      </div>
+      <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" as="a" href="FROSTE Landing Page.dc.html#top" variant="primary" size="sm" icon-left="home" hint-size="90px,38px">Home</x-import>
+    </div>
+  </div>
+</header>
+
+<section id="shop-top" style="scroll-margin-top:96px;position:relative;overflow:hidden;background:var(--grad-holographic-soft);padding:clamp(36px,6vh,64px) clamp(20px,6vw,60px) clamp(20px,3vh,32px);text-align:center">
+  <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:12px;align-items:center">
+    <a href="FROSTE Landing Page.dc.html#top" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--ink-500)">← Back to Home</a>
+    <span style="font-family:var(--font-display);font-weight:600;font-size:var(--fs-caption);letter-spacing:var(--ls-widest);text-transform:uppercase;color:var(--pink-500)">The Lineup</span>
+    <h1 style="margin:0;font-family:var(--font-display);font-weight:var(--fw-extrabold);font-size:clamp(30px,5vw,46px);letter-spacing:var(--ls-tight);color:var(--ink-900)">3 sprays. 3 problems solved.</h1>
+    <p style="margin:0;font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:clamp(18px,2.4vw,22px);color:var(--ink-500)">{{ current.serif }}</p>
+  </div>
+</section>
+
+<section style="background:var(--surface-page);padding:clamp(32px,6vh,64px) clamp(20px,6vw,60px) clamp(56px,10vh,110px)">
+  <div style="max-width:var(--container-lg);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
+    <div style="display:flex;gap:clamp(24px,5vw,56px);flex-wrap:wrap;align-items:stretch;background:var(--surface-cream);border-radius:var(--radius-2xl);padding:clamp(20px,4vw,40px);box-shadow:var(--shadow-md)">
+      <div style="flex:1 1 320px;min-width:260px;position:relative;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-xl);background:var(--grad-holographic-soft);padding:32px;min-height:340px">
+        <sc-if value="{{ current.bestseller }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;top:18px;left:18px">
+            <x-import component-from-global-scope="FrostDesignSystem_5751f8.Badge" tone="ink" size="sm" hint-size="100px,24px">★ Bestseller</x-import>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isAcne }}" hint-placeholder-val="{{ false }}">
+          <img src="assets/product-acne-care.png" alt="Frosté Acne Care" style="height:280px;object-fit:contain;filter:drop-shadow(0 20px 30px rgba(24,34,56,0.26))">
+        </sc-if>
+        <sc-if value="{{ isOil }}" hint-placeholder-val="{{ false }}">
+          <img src="assets/product-oil-control.png" alt="Frosté Oil Control" style="height:280px;object-fit:contain;filter:drop-shadow(0 20px 30px rgba(24,34,56,0.26))">
+        </sc-if>
+        <sc-if value="{{ isDewy }}" hint-placeholder-val="{{ true }}">
+          <img src="assets/product-dewy-glow.png" alt="Frosté Dewy Glow" style="height:280px;object-fit:contain;filter:drop-shadow(0 20px 30px rgba(24,34,56,0.26))">
+        </sc-if>
+      </div>
+      <div style="flex:1 1 380px;min-width:280px;display:flex;flex-direction:column;gap:var(--space-4)">
+        <div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:800;font-size:clamp(24px,3vw,32px);color:var(--ink-900)">{{ current.name }}</h3>
+            <x-import component-from-global-scope="FrostDesignSystem_5751f8.PriceTag" amount="{{ price }}" size="22px" hint-size="130px,30px"></x-import>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--ink-400);font-family:var(--font-display);font-size:13px;font-weight:600">
+            <span style="color:var(--variant-dewy-warm);letter-spacing:2px;font-size:15px">★★★★★</span>
+            <span>{{ current.rating }} · {{ current.reviews }} reviews</span>
+          </div>
+        </div>
+        <p style="margin:0;font-family:var(--font-body);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink-500)">{{ current.about }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ current.tags }}" as="tagItem" hint-placeholder-count="3">
+            <x-import component-from-global-scope="FrostDesignSystem_5751f8.Tag" tone="{{ current.tone }}" hint-size="90px,32px">{{ tagItem }}</x-import>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:var(--space-2)">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-400)">Choose your formula</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ products }}" as="p" hint-placeholder-count="3">
+              <x-import component-from-global-scope="FrostDesignSystem_5751f8.Tag" tone="{{ p.tone }}" dot="true" selected="{{ p.selected }}" onClick="{{ p.onSelect }}" hint-size="100px,36px">{{ p.name }}</x-import>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-400)">Pick your free charm <span style="color:var(--pink-500)">Free 🧸</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ charms }}" as="c" hint-placeholder-count="4">
+              <x-import component-from-global-scope="FrostDesignSystem_5751f8.Tag" tone="neutral" selected="{{ c.selected }}" onClick="{{ c.onSelect }}" hint-size="110px,36px">{{ c.emoji }} {{ c.name }}</x-import>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-400)">Quantity</div>
+          <div style="display:inline-flex;align-items:center;gap:14px;padding:6px 8px;border-radius:999px;border:1px solid var(--border-default);width:fit-content">
+            <button type="button" onClick="{{ decQty }}" style="width:34px;height:34px;border-radius:50%;border:none;background:var(--surface-sunk);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-700);font-size:18px;font-family:var(--font-display)">−</button>
+            <span style="font-family:var(--font-display);font-weight:700;font-size:16px;min-width:20px;text-align:center">{{ qty }}</span>
+            <button type="button" onClick="{{ incQty }}" style="width:34px;height:34px;border-radius:50%;border:none;background:var(--surface-sunk);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-700);font-size:18px;font-family:var(--font-display)">+</button>
+          </div>
+        </div>
+        <div style="margin-top:var(--space-3)">
+          <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="primary" size="lg" block="true" icon-left="shopping-bag" onClick="{{ addToBag }}" hint-size="100%,54px">Add to Bag · ฿{{ lineTotalPrice }}</x-import>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a href="FROSTE Landing Page.dc.html#top" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--ink-400);padding:8px 16px;border-radius:999px;border:1px solid var(--border-subtle)" style-hover="color:var(--pink-600);border-color:var(--pink-300)">↑ Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:var(--ink-900);color:var(--ink-100);padding:clamp(48px,8vh,80px) clamp(20px,6vw,60px) clamp(24px,4vh,40px)">
+  <div style="max-width:var(--container-lg);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-10)">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,6vw,72px);justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:280px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span id="logo-mark-footer"><x-import component-from-global-scope="FrostDesignSystem_5751f8.Logomark" size="30" fill="solid" color="#76C3FFEB" hint-size="30px,30px"></x-import></span>
+          <span id="logo-word-footer"><x-import component-from-global-scope="FrostDesignSystem_5751f8.Wordmark" as="div" size="20px" fill="white" hint-size="100px,24px">FROSTÉ</x-import></span>
+        </div>
+        <p style="margin:0;font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:16px;color:rgba(255,255,255,0.75)">Spray It. Slay It.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5)">Shop</span>
+        <button type="button" onClick="{{ selectAcne }}" style="background:none;border:none;padding:0;text-align:left;cursor:pointer;font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.85)">Acne Care</button>
+        <button type="button" onClick="{{ selectOil }}" style="background:none;border:none;padding:0;text-align:left;cursor:pointer;font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.85)">Oil Control</button>
+        <button type="button" onClick="{{ selectDewy }}" style="background:none;border:none;padding:0;text-align:left;cursor:pointer;font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.85)">Dewy Glow</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5)">Learn</span>
+        <a href="FROSTE Landing Page.dc.html#how-to-use" style="font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.85)">How To Use</a>
+        <a href="FROSTE Landing Page.dc.html#reviews" style="font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.85)">Reviews</a>
+        <a href="FROSTE Landing Page.dc.html#faq" style="font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.85)">FAQ</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5)">Follow</span>
+        <div style="display:flex;gap:10px">
+          <x-import component-from-global-scope="FrostDesignSystem_5751f8.IconButton" icon="at-sign" label="Instagram" variant="secondary" size="sm" hint-size="36px,36px"></x-import>
+          <x-import component-from-global-scope="FrostDesignSystem_5751f8.IconButton" icon="music-2" label="TikTok" variant="secondary" size="sm" hint-size="36px,36px"></x-import>
+        </div>
+        <span style="font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.85)">@froste.official</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,0.5)">
+      <span>© 2026 Frosté. Made for the group chat.</span>
+      <span>🌿 ฿{{ price }} launch price while supplies last</span>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;gap:14px;padding:12px clamp(16px,4vw,32px);background:var(--glass-fill-strong);backdrop-filter:var(--blur-md);-webkit-backdrop-filter:var(--blur-md);border-top:1px solid var(--border-on-glass);box-shadow:var(--shadow-lg)">
+    <sc-if value="{{ isAcne }}" hint-placeholder-val="{{ false }}">
+      <img src="assets/product-acne-care.png" alt="" style="height:44px;flex:none;filter:drop-shadow(0 4px 8px rgba(24,34,56,0.2))">
+    </sc-if>
+    <sc-if value="{{ isOil }}" hint-placeholder-val="{{ false }}">
+      <img src="assets/product-oil-control.png" alt="" style="height:44px;flex:none;filter:drop-shadow(0 4px 8px rgba(24,34,56,0.2))">
+    </sc-if>
+    <sc-if value="{{ isDewy }}" hint-placeholder-val="{{ true }}">
+      <img src="assets/product-dewy-glow.png" alt="" style="height:44px;flex:none;filter:drop-shadow(0 4px 8px rgba(24,34,56,0.2))">
+    </sc-if>
+    <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+      <span style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--ink-900);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ current.name }}</span>
+      <span style="font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--ink-400)">฿{{ price }}</span>
+    </div>
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="primary" size="md" icon-left="shopping-bag" onClick="{{ addToBag }}" hint-size="140px,44px">Add to Bag</x-import>
+  </div>
+</sc-if>
+
+<sc-if value="{{ toastVisible }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:50%;bottom:96px;transform:translateX(-50%);z-index:70;width:min(360px,90vw)">
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Toast" tone="accent" hint-size="320px,70px">{{ toastMsg }}</x-import>
+  </div>
+</sc-if>
+
+<x-import component-from-global-scope="FrostDesignSystem_5751f8.Dialog" open="{{ cartOpen }}" onClose="{{ closeFlow }}" title="Your Bag" size="md" hint-size="480px,420px">
+  <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 0;text-align:center">
+      <span style="font-size:32px">🧸</span>
+      <p style="margin:0;font-family:var(--font-body);color:var(--ink-500)">Your bag is empty.<br>Time to slay.</p>
+    </div>
+  </sc-if>
+  <sc-if value="{{ cartHasItems }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ cartLines }}" as="it" hint-placeholder-count="0">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle)">
+          <div style="width:56px;height:56px;border-radius:var(--radius-md);background:{{ it.grad }};display:flex;align-items:center;justify-content:center;flex:none;padding:6px">
+            <sc-if value="{{ it.isAcne }}" hint-placeholder-val="{{ false }}">
+              <div role="img" aria-label="{{ it.name }}" style="width:100%;height:100%;background-image:url(assets/product-acne-care.png);background-size:contain;background-position:center;background-repeat:no-repeat"></div>
+            </sc-if>
+            <sc-if value="{{ it.isOil }}" hint-placeholder-val="{{ false }}">
+              <div role="img" aria-label="{{ it.name }}" style="width:100%;height:100%;background-image:url(assets/product-oil-control.png);background-size:contain;background-position:center;background-repeat:no-repeat"></div>
+            </sc-if>
+            <sc-if value="{{ it.isDewy }}" hint-placeholder-val="{{ false }}">
+              <div role="img" aria-label="{{ it.name }}" style="width:100%;height:100%;background-image:url(assets/product-dewy-glow.png);background-size:contain;background-position:center;background-repeat:no-repeat"></div>
+            </sc-if>
+          </div>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+            <span style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--ink-900)">{{ it.name }}</span>
+            <span style="font-family:var(--font-body);font-size:12px;color:var(--ink-400)">Charm: {{ it.charmLabel }}</span>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+              <button type="button" onClick="{{ it.onDec }}" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--border-default);background:var(--surface-card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-700)">−</button>
+              <span style="font-family:var(--font-display);font-weight:600;font-size:13px;min-width:14px;text-align:center">{{ it.qty }}</span>
+              <button type="button" onClick="{{ it.onInc }}" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--border-default);background:var(--surface-card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-700)">+</button>
+            </div>
+          </div>
+          <span style="font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink-900);flex:none">฿{{ it.lineTotal }}</span>
+        </div>
+      </sc-for>
+      <div style="display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:var(--radius-md);background:var(--pink-50);font-family:var(--font-body);font-size:13px;color:var(--pink-700)">🧸 Free charm keychain included with every order</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-family:var(--font-body);font-size:14px;color:var(--ink-500)">
+        <div style="display:flex;justify-content:space-between"><span>Subtotal</span><span>฿{{ subtotal }}</span></div>
+        <div style="display:flex;justify-content:space-between"><span>Shipping</span><span>{{ shippingLabel }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-display);font-weight:700;color:var(--ink-900);font-size:17px;padding-top:6px;border-top:1px solid var(--border-subtle)"><span>Total</span><span>฿{{ total }}</span></div>
+      </div>
+      <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="primary" size="lg" block="true" icon-right="arrow-right" onClick="{{ goToCheckout }}" hint-size="100%,52px">Checkout · ฿{{ total }}</x-import>
+    </div>
+  </sc-if>
+</x-import>
+
+<x-import component-from-global-scope="FrostDesignSystem_5751f8.Dialog" open="{{ checkoutOpen }}" onClose="{{ closeFlow }}" title="Shipping details" description="Where should we send your glow?" size="md" hint-size="480px,440px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Input" label="Full name" placeholder="Your name" value="{{ shipName }}" onChange="{{ onShipNameChange }}" required="true" hint-size="100%,58px"></x-import>
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Input" label="Phone number" placeholder="08x-xxx-xxxx" value="{{ shipPhone }}" onChange="{{ onShipPhoneChange }}" required="true" hint-size="100%,58px"></x-import>
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Input" label="Delivery address" placeholder="House no., street, sub-district, district, province, postcode" value="{{ shipAddress }}" onChange="{{ onShipAddressChange }}" required="true" hint-size="100%,58px"></x-import>
+    <sc-if value="{{ checkoutError }}" hint-placeholder-val="{{ false }}">
+      <span style="font-family:var(--font-body);font-size:13px;color:var(--danger)">{{ checkoutError }}</span>
+    </sc-if>
+    <div style="display:flex;gap:10px;margin-top:8px">
+      <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="secondary" size="lg" onClick="{{ backToCart }}" hint-size="110px,50px">Back</x-import>
+      <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="primary" size="lg" block="true" icon-right="arrow-right" onClick="{{ goToPayment }}" hint-size="100%,50px">Continue to Payment</x-import>
+    </div>
+  </div>
+</x-import>
+
+<x-import component-from-global-scope="FrostDesignSystem_5751f8.Dialog" open="{{ paymentOpen }}" onClose="{{ closeFlow }}" title="Payment method" description="Pick how you'd like to pay." size="md" hint-size="480px,480px">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Radio" name="payment-method" label="Credit / Debit Card" sublabel="Visa, Mastercard, JCB" checked="{{ isCard }}" onChange="{{ onSelectCard }}" hint-size="100%,50px"></x-import>
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Radio" name="payment-method" label="PromptPay" sublabel="Scan QR from your banking app" checked="{{ isPromptpay }}" onChange="{{ onSelectPromptpay }}" hint-size="100%,50px"></x-import>
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Radio" name="payment-method" label="Cash on Delivery" sublabel="Pay when it arrives" checked="{{ isCod }}" onChange="{{ onSelectCod }}" hint-size="100%,50px"></x-import>
+    <div style="display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:var(--radius-lg);background:var(--surface-sunk);font-family:var(--font-body);font-size:14px;color:var(--ink-500)">
+      <div style="display:flex;justify-content:space-between"><span>Subtotal</span><span>฿{{ subtotal }}</span></div>
+      <div style="display:flex;justify-content:space-between"><span>Shipping</span><span>{{ shippingLabel }}</span></div>
+      <div style="display:flex;justify-content:space-between;font-family:var(--font-display);font-weight:700;color:var(--ink-900);font-size:16px;padding-top:6px;border-top:1px solid var(--border-subtle)"><span>Total</span><span>฿{{ total }}</span></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:4px">
+      <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="secondary" size="lg" onClick="{{ backToCheckout }}" hint-size="110px,50px">Back</x-import>
+      <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="primary" size="lg" block="true" icon-left="lock" onClick="{{ placeOrder }}" hint-size="100%,50px">Place Order · ฿{{ total }}</x-import>
+    </div>
+  </div>
+</x-import>
+
+<x-import component-from-global-scope="FrostDesignSystem_5751f8.Dialog" open="{{ successOpen }}" onClose="{{ continueShopping }}" size="sm" hint-size="420px,380px">
+  <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:8px 0 4px">
+    <div style="width:64px;height:64px;border-radius:50%;background:var(--success-soft);display:flex;align-items:center;justify-content:center">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13l4 4L19 7" stroke="var(--success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 style="margin:0;font-family:var(--font-display);font-weight:800;font-size:24px;color:var(--ink-900)">Order placed! 🎉</h2>
+    <p style="margin:0;font-family:var(--font-body);font-size:15px;color:var(--ink-500)">Order {{ orderNumber }} is on its way — your free charm's already packed.</p>
+    <div style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--pink-600)">฿{{ orderTotal }}</div>
+    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="primary" size="lg" block="true" onClick="{{ continueShopping }}" hint-size="100%,50px">Continue Shopping</x-import>
+  </div>
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;dewy&quot;,&quot;options&quot;:[&quot;acne&quot;,&quot;oil&quot;,&quot;dewy&quot;],&quot;tsType&quot;:&quot;'acne'|'oil'|'dewy'&quot;,&quot;section&quot;:&quot;Shop&quot;},&quot;priceAmount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:159,&quot;min&quot;:99,&quot;max&quot;:399,&quot;step&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Shop&quot;}}">
+const PRODUCTS = [
+  { id: 'acne', name: 'Acne Care', tone: 'acne', serif: 'Clear skin, zero drama.', about: "A featherlight mist that calms breakouts and blurs redness while you're out living. Spray, go, glow.", tags: ['Salicylic', 'Oil-free', 'Fragrance-free'], rating: '4.9', reviews: '1,243', bestseller: true },
+  { id: 'oil', name: 'Oil Control', tone: 'oil', serif: 'Shine? Never met her.', about: 'Locks makeup in place and keeps midday shine on mute. A quick mist resets your whole face.', tags: ['Mattifying', 'Pore-blur', '12h hold'], rating: '4.8', reviews: '982', bestseller: false },
+  { id: 'dewy', name: 'Dewy Glow', tone: 'dewy', serif: 'Your face, but dewier.', about: 'A dewy veil of hydration for that lit-from-within finish. The one everyone stops you to ask about.', tags: ['Hyaluronic', 'Lit-from-within', 'Dewy finish'], rating: '5.0', reviews: '1,587', bestseller: true },
+];
+
+const CHARMS = [
+  { id: 'bear', emoji: '🧸', name: 'Gummy Bear' },
+  { id: 'duck', emoji: '🦆', name: 'Rubber Duck' },
+  { id: 'heart', emoji: '💖', name: 'Love Heart' },
+  { id: 'balloon', emoji: '🎈', name: 'Balloon Dog' },
+];
+
+class Component extends DCLogic {
+  state = {
+    selectedVariant: 'dewy',
+    selectedCharm: 'bear',
+    cartItems: [],
+    flowStep: null,
+    toastMsg: '',
+    stickyBarVisible: false,
+    shipName: '',
+    shipPhone: '',
+    shipAddress: '',
+    checkoutError: '',
+    paymentMethod: 'card',
+    lastOrder: null,
+    qty: 1,
+    showLoader: true,
+    loaderFading: false,
+  };
+
+  componentDidMount() {
+    this._loaderTimer = setTimeout(() => {
+      this.setState({ loaderFading: true });
+      this._loaderTimer2 = setTimeout(() => this.setState({ showLoader: false }), 450);
+    }, 900);
+    const params = new URLSearchParams(window.location.search);
+    const qVariant = params.get('variant');
+    const initial = (qVariant && PRODUCTS.some((p) => p.id === qVariant)) ? qVariant
+      : (this.props.defaultVariant && PRODUCTS.some((p) => p.id === this.props.defaultVariant)) ? this.props.defaultVariant
+      : this.state.selectedVariant;
+    this.setState({ selectedVariant: initial });
+
+    this.setState({ cartItems: this.readCart() });
+    if (window.location.hash === '#cart') this.setState({ flowStep: 'cart' });
+
+    this._onScroll = () => this.setState({ stickyBarVisible: window.scrollY > 420 });
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    clearTimeout(this._toastTimer);
+    clearTimeout(this._loaderTimer);
+    clearTimeout(this._loaderTimer2);
+  }
+
+  scrollToId(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 96;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  readCart() {
+    try {
+      const raw = JSON.parse(localStorage.getItem('froste_cart_v1'));
+      return Array.isArray(raw) ? raw : [];
+    } catch (e) { return []; }
+  }
+
+  persistCart(items) {
+    localStorage.setItem('froste_cart_v1', JSON.stringify(items));
+    window.dispatchEvent(new Event('froste-cart-update'));
+  }
+
+  selectVariant = (id) => {
+    this.setState({ selectedVariant: id });
+    this.scrollToId('shop-top');
+  };
+
+  addToBag = () => {
+    const p = PRODUCTS.find((x) => x.id === this.state.selectedVariant);
+    const c = CHARMS.find((x) => x.id === this.state.selectedCharm);
+    const price = this.props.priceAmount ?? 159;
+    const addQty = this.state.qty;
+    clearTimeout(this._toastTimer);
+    this.setState((s) => {
+      const items = [...s.cartItems];
+      const idx = items.findIndex((it) => it.productId === p.id && it.charmId === c.id);
+      if (idx >= 0) items[idx] = { ...items[idx], qty: items[idx].qty + addQty };
+      else items.push({ productId: p.id, charmId: c.id, name: p.name, grad: `var(--grad-${p.id})`, price, qty: addQty, charm: { emoji: c.emoji, name: c.name } });
+      this.persistCart(items);
+      return { cartItems: items, qty: 1, toastMsg: `Added ${addQty} × ${p.name} + ${c.emoji} ${c.name} to your bag` };
+    });
+    this._toastTimer = setTimeout(() => this.setState({ toastMsg: '' }), 2800);
+  };
+
+  incQty = () => this.setState((s) => ({ qty: Math.min(s.qty + 1, 10) }));
+  decQty = () => this.setState((s) => ({ qty: Math.max(s.qty - 1, 1) }));
+
+  openCart = () => this.setState({ flowStep: 'cart' });
+  closeFlow = () => this.setState({ flowStep: null });
+
+  cartQty = (idx, delta) => this.setState((s) => {
+    const items = [...s.cartItems];
+    const next = items[idx].qty + delta;
+    if (next <= 0) items.splice(idx, 1);
+    else items[idx] = { ...items[idx], qty: next };
+    this.persistCart(items);
+    return { cartItems: items };
+  });
+
+  goToCheckout = () => {
+    if (this.state.cartItems.length === 0) return;
+    this.setState({ flowStep: 'checkout' });
+  };
+
+  backToCart = () => this.setState({ flowStep: 'cart' });
+
+  goToPayment = () => {
+    const { shipName, shipPhone, shipAddress } = this.state;
+    if (!shipName.trim() || !shipPhone.trim() || !shipAddress.trim()) {
+      this.setState({ checkoutError: 'Fill in every field so your mist actually arrives.' });
+      return;
+    }
+    this.setState({ checkoutError: '', flowStep: 'payment' });
+  };
+
+  backToCheckout = () => this.setState({ flowStep: 'checkout' });
+
+  placeOrder = () => {
+    const subtotal = this.state.cartItems.reduce((s, it) => s + it.price * it.qty, 0);
+    const shipping = subtotal >= 300 || subtotal === 0 ? 0 : 40;
+    const orderNumber = 'FR' + Math.floor(10000 + Math.random() * 89999);
+    this.persistCart([]);
+    this.setState({ flowStep: 'success', lastOrder: { orderNumber, total: subtotal + shipping }, cartItems: [], shipName: '', shipPhone: '', shipAddress: '' });
+  };
+
+  continueShopping = () => {
+    this.setState({ flowStep: null });
+    this.scrollToId('shop-top');
+  };
+
+  onShipNameChange = (e) => this.setState({ shipName: e.target.value });
+  onShipPhoneChange = (e) => this.setState({ shipPhone: e.target.value });
+  onShipAddressChange = (e) => this.setState({ shipAddress: e.target.value });
+  onSelectCard = () => this.setState({ paymentMethod: 'card' });
+  onSelectPromptpay = () => this.setState({ paymentMethod: 'promptpay' });
+  onSelectCod = () => this.setState({ paymentMethod: 'cod' });
+
+  renderVals() {
+    const state = this.state;
+    const price = this.props.priceAmount ?? 159;
+    const current = PRODUCTS.find((p) => p.id === state.selectedVariant) || PRODUCTS[0];
+
+    const products = PRODUCTS.map((p) => ({
+      ...p,
+      selected: p.id === state.selectedVariant,
+      onSelect: () => this.setState({ selectedVariant: p.id }),
+    }));
+
+    const charms = CHARMS.map((c) => ({
+      ...c,
+      selected: c.id === state.selectedCharm,
+      onSelect: () => this.setState({ selectedCharm: c.id }),
+    }));
+
+    const cartLines = state.cartItems.map((it, idx) => ({
+      ...it,
+      isAcne: it.productId === 'acne',
+      isOil: it.productId === 'oil',
+      isDewy: it.productId === 'dewy',
+      charmLabel: `${it.charm.emoji} ${it.charm.name}`,
+      lineTotal: it.price * it.qty,
+      onInc: () => this.cartQty(idx, 1),
+      onDec: () => this.cartQty(idx, -1),
+    }));
+    const subtotal = state.cartItems.reduce((s, it) => s + it.price * it.qty, 0);
+    const shipping = subtotal >= 300 || subtotal === 0 ? 0 : 40;
+    const total = subtotal + shipping;
+    const cartCount = state.cartItems.reduce((s, it) => s + it.qty, 0);
+    const lineTotalPrice = price * state.qty;
+
+    return {
+      showLoader: state.showLoader,
+      loaderOpacity: state.loaderFading ? '0' : '1',
+      price, current, products, charms,
+      qty: state.qty, incQty: this.incQty, decQty: this.decQty, lineTotalPrice,
+      isAcne: current.id === 'acne',
+      isOil: current.id === 'oil',
+      isDewy: current.id === 'dewy',
+      cartLines, cartEmpty: cartLines.length === 0, cartHasItems: cartLines.length > 0,
+      subtotal, total, shippingLabel: shipping === 0 ? 'Free' : `฿${shipping}`,
+      cartCount, hasCart: cartCount > 0,
+      toastMsg: state.toastMsg,
+      toastVisible: !!state.toastMsg,
+      showSticky: state.stickyBarVisible,
+      addToBag: this.addToBag,
+      openCart: this.openCart,
+      closeFlow: this.closeFlow,
+      goToCheckout: this.goToCheckout,
+      backToCart: this.backToCart,
+      goToPayment: this.goToPayment,
+      backToCheckout: this.backToCheckout,
+      placeOrder: this.placeOrder,
+      continueShopping: this.continueShopping,
+      cartOpen: state.flowStep === 'cart',
+      checkoutOpen: state.flowStep === 'checkout',
+      paymentOpen: state.flowStep === 'payment',
+      successOpen: state.flowStep === 'success',
+      shipName: state.shipName, shipPhone: state.shipPhone, shipAddress: state.shipAddress,
+      onShipNameChange: this.onShipNameChange, onShipPhoneChange: this.onShipPhoneChange, onShipAddressChange: this.onShipAddressChange,
+      checkoutError: state.checkoutError,
+      isCard: state.paymentMethod === 'card', isPromptpay: state.paymentMethod === 'promptpay', isCod: state.paymentMethod === 'cod',
+      onSelectCard: this.onSelectCard, onSelectPromptpay: this.onSelectPromptpay, onSelectCod: this.onSelectCod,
+      orderNumber: state.lastOrder ? state.lastOrder.orderNumber : '',
+      orderTotal: state.lastOrder ? state.lastOrder.total : 0,
+      selectAcne: () => this.selectVariant('acne'),
+      selectOil: () => this.selectVariant('oil'),
+      selectDewy: () => this.selectVariant('dewy'),
+    };
+  }
+}
+</script>
+</body>
+</html>

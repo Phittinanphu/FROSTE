@@ -1,0 +1,113 @@
+/* ============================================================
+   FROSTÉ · COLORS
+   Extracted from the launch IG carousel (Canva source).
+   Text fills, iridescent gradient stops, and per-variant hues
+   were sampled directly from the artwork.
+   ============================================================ */
+:root {
+  /* --- Ink / neutrals -------------------------------------------------
+     Deep cool navy is the brand's "black". Never use pure #000. */
+  --ink-900: #182238;   /* primary text · wordmark (rgb 24,34,56) */
+  --ink-700: #2E3A54;
+  --ink-500: #4A5470;   /* secondary / serif subtitle (rgb 74,84,112) */
+  --ink-400: #6B7591;
+  --ink-300: #939BB3;
+  --ink-200: #C4C9D6;
+  --ink-100: #E5E8F0;
+  --ink-50:  #F1F3F8;
+  --white:   #FFFFFF;
+  --cream:   #F7F9F0;   /* warm off-white surface (page-3 gradient core) */
+  --paper:   #FBFCFE;   /* cool off-white page surface */
+
+  /* --- Frost Pink · primary brand accent (magenta) --------------------
+     The launch-price / CTA colour. rgb 224,70,138. */
+  --pink-700: #A82866;
+  --pink-600: #C7327A;  /* pressed */
+  --pink-500: #E0468A;  /* DEFAULT accent */
+  --pink-400: #EE68A4;  /* hover */
+  --pink-300: #F79AC6;
+  --pink-200: #FBC6E0;
+  --pink-100: #FDE4F1;
+  --pink-50:  #FEF2F8;
+
+  /* --- Iridescent pastels · the holographic signature -----------------
+     Sampled across the page-1 mesh gradient (blue→lilac→pink→cyan). */
+  --iri-sky:        #76C3FF;
+  --iri-aqua:       #AAF5FF;
+  --iri-cyan:       #BDFBFF;
+  --iri-bubblegum:  #F8BDFF;
+  --iri-rose:       #F0B6FF;
+  --iri-lilac:      #DBC6FF;
+  --iri-periwinkle: #AEBFFF;
+  --iri-mist:       #DDE9FF;
+
+  /* --- Fresh / botanical (page-3 offer gradient) ---------------------- */
+  --mint-100: #EEF8EC;
+  --mint-200: #DFF7E7;
+  --mint-300: #B8DCBB;
+  --teal-500: #00A78C;
+  --babyblue: #CDE6FB;
+
+  /* --- Per-variant signature hues (bottle bodies) --------------------- */
+  --variant-acne:      #00A78C;  /* Acne Care · teal-green */
+  --variant-acne-soft: #B8DCBB;
+  --variant-oil:       #5EA9D6;  /* Oil Control · icy blue */
+  --variant-oil-soft:  #CFE3EC;
+  --variant-dewy:      #E17FB0;  /* Dewy Glow · sunset rose */
+  --variant-dewy-warm: #F2A65A;  /* Dewy Glow · warm amber */
+
+  /* --- Status (kept soft & on-brand) ---------------------------------- */
+  --success:      #00A78C;  --success-soft: #DFF7E7;
+  --warning:      #E58E36;  --warning-soft: #FBEBD6;
+  --danger:       #E0468A;  --danger-soft:  #FDE4F1;
+  --info:         #5EA9D6;  --info-soft:    #DDE9FF;
+
+  /* ==================================================================
+     SEMANTIC ALIASES — reach for these in components, not the raw scale
+     ================================================================== */
+  --text-primary:   var(--ink-900);
+  --text-secondary: var(--ink-500);
+  --text-muted:     var(--ink-300);
+  --text-on-color:  var(--white);
+  --text-accent:    var(--pink-500);
+  --text-link:      var(--pink-500);
+  --text-link-hover:var(--pink-600);
+
+  --surface-page:  var(--paper);
+  --surface-card:  var(--white);
+  --surface-cream: var(--cream);
+  --surface-sunk:  var(--ink-50);
+  --surface-inverse: var(--ink-900);
+
+  --brand-accent:       var(--pink-500);
+  --brand-accent-hover: var(--pink-400);
+  --brand-accent-press: var(--pink-600);
+  --brand-accent-soft:  var(--pink-100);
+
+  --border-subtle:  rgba(24, 34, 56, 0.07);
+  --border-default: rgba(24, 34, 56, 0.12);
+  --border-strong:  rgba(24, 34, 56, 0.22);
+  --border-on-glass: rgba(255, 255, 255, 0.60);
+  --focus-ring:     var(--pink-500);
+
+  /* Glass — frosted pills/cards floating over the iridescent gradient */
+  --glass-fill:    rgba(255, 255, 255, 0.55);
+  --glass-fill-strong: rgba(255, 255, 255, 0.78);
+  --glass-border:  rgba(255, 255, 255, 0.65);
+  --glass-tint-ink: rgba(24, 34, 56, 0.28);
+
+  /* ==================================================================
+     SIGNATURE GRADIENTS — the brand's most recognisable asset
+     ================================================================== */
+  --grad-holographic: linear-gradient(140deg,
+      #76C3FF 0%, #AEBFFF 20%, #DBC6FF 38%,
+      #F8BDFF 56%, #F0B6FF 72%, #C8ECFF 88%, #BDFBFF 100%); /* @kind color */
+  --grad-holographic-soft: linear-gradient(140deg,
+      #CFE6FF 0%, #E4E2FF 35%, #F6DDFF 65%, #DAF8FF 100%); /* @kind color */
+  --grad-mint-fresh: linear-gradient(135deg,
+      #DFF7E7 0%, #F7F9F0 48%, #E9F1F0 60%, #CDE6FB 100%); /* @kind color */
+  --grad-dewy: linear-gradient(150deg, #F2A65A 0%, #E17FB0 55%, #C7327A 100%); /* @kind color */
+  --grad-acne: linear-gradient(150deg, #B8DCBB 0%, #35B79C 55%, #00A78C 100%); /* @kind color */
+  --grad-oil:  linear-gradient(150deg, #CFE3EC 0%, #8CC6DA 55%, #5EA9D6 100%); /* @kind color */
+  --grad-pink-cta: linear-gradient(135deg, #F06AA6 0%, #E0468A 55%, #C7327A 100%); /* @kind color */
+}

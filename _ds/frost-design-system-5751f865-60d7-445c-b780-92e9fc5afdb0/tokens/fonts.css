@@ -1,0 +1,7 @@
+/* Frosté webfonts — the exact families used in the brand's Canva source.
+   Loaded from the Google Fonts CDN (binaries are not self-hosted in this system;
+   see readme.md → VISUAL FOUNDATIONS if you need to vendor the woff2 files).
+   - Poppins        : the workhorse — display, wordmark, UI, body
+   - Playfair Display: italic serif accent (benefit/variant lines)
+   - Noto Sans Thai  : Thai copy + the ฿ baht glyph */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap');
