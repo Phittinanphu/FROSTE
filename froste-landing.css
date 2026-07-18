@@ -1,0 +1,15 @@
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);color:var(--ink-900);background:var(--surface-page);-webkit-font-smoothing:antialiased}
+a{color:var(--pink-500);text-decoration:none}
+a:hover{color:var(--pink-600)}
+::selection{background:var(--pink-200)}
+@keyframes froFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes froMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes froLoadBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes froLoadPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0.55)}50%{transform:scale(1.08);box-shadow:0 0 0 16px rgba(255,255,255,0)}}
+@keyframes froLoadDot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+.sc-host{height:auto !important}
+#logo-word-header div,#logo-word-footer div{color:#76C3FFEB !important}
+#logo-mark-header circle,#logo-mark-footer circle{fill:var(--ink-900) !important}
+#logo-mark-header path[stroke],#logo-mark-footer path[stroke]{stroke:var(--ink-900) !important}
