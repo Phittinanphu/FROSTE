@@ -51,7 +51,7 @@
           <span style="position:absolute;top:-2px;right:-2px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--pink-500);color:#fff;font-family:var(--font-display);font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);pointer-events:none">{{ cartCount }}</span>
         </sc-if>
       </div>
-      <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" as="a" href="index.html#top" variant="primary" size="sm" icon-left="home" hint-size="90px,38px">Home</x-import>
+      <x-import id="nav-home-btn" component-from-global-scope="FrostDesignSystem_5751f8.Button" as="a" href="index.html#top" variant="primary" size="sm" icon-left="home" hint-size="76px,38px">Home</x-import>
     </div>
   </div>
 </header>
@@ -189,7 +189,7 @@
       <span style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--ink-900);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ current.name }}</span>
       <span style="font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--ink-400)">฿{{ price }}</span>
     </div>
-    <x-import component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="primary" size="md" icon-left="shopping-bag" onClick="{{ addToBag }}" hint-size="140px,44px">Add to Bag</x-import>
+    <x-import id="sticky-add-to-bag-btn" component-from-global-scope="FrostDesignSystem_5751f8.Button" variant="primary" size="md" icon-left="shopping-bag" onClick="{{ addToBag }}" hint-size="126px,44px">Add to Bag</x-import>
   </div>
 </sc-if>
 

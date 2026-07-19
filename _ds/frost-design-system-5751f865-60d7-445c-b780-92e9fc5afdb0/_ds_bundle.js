@@ -149,17 +149,23 @@ function Button({
   const Tag = as;
   const cls = ['fro-btn', `fro-btn--${variant}`, `fro-btn--${size}`, block ? 'fro-btn--block' : '', className].filter(Boolean).join(' ');
   const iconSize = size === 'lg' ? 20 : size === 'sm' ? 16 : 18;
+  /* A one-sided icon otherwise pushes the label off the button's true
+     centre; a matching invisible spacer on the empty side re-balances it
+     so the label always sits centred on the pink pill, icon or no icon. */
+  const spacerStyle = { width: iconSize, flex: 'none', display: 'inline-block' };
+  const needsLeftSpacer = !iconLeft && !!iconRight;
+  const needsRightSpacer = !iconRight && !!iconLeft;
   return /*#__PURE__*/React.createElement(Tag, _extends({
     className: cls,
     disabled: Tag === 'button' ? disabled : undefined,
     "aria-disabled": disabled || undefined
-  }, rest), iconLeft && /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+  }, rest), iconLeft ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: iconLeft,
     size: iconSize
-  }), children, iconRight && /*#__PURE__*/React.createElement(__ds_scope.Icon, {
+  }) : needsLeftSpacer ? /*#__PURE__*/React.createElement('span', { style: spacerStyle, 'aria-hidden': true }) : null, children, iconRight ? /*#__PURE__*/React.createElement(__ds_scope.Icon, {
     name: iconRight,
     size: iconSize
-  }));
+  }) : needsRightSpacer ? /*#__PURE__*/React.createElement('span', { style: spacerStyle, 'aria-hidden': true }) : null);
 }
 Object.assign(__ds_scope, { Button });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/actions/Button.jsx", error: String((e && e.message) || e) }); }
